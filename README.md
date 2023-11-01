@@ -1,43 +1,13 @@
-# TWRP device tree for Xiaomi 13
+### TWRP device tree for Xiaomi 14
 
-Xiaomi 13 (codenamed _"fuxi"_) is a high-end smartphone from Xiaomi.
+由于 Xiaomi 14 使用 Keyminit 3.0 Strongbox 加密, 我们大致需要以下步骤来解密 userdata:
 
-It was announced & released on December 2022.
+metadata 解密后挂载 userdata → 输入密码 → weaver → keymint-strongbox → 对加密目录安装 key → userdata 解密完成.
 
-## Device specifications
+经过测试发现 keymint-strongbox 需要调用一个 android.se.omapi.ISecureElementService 服务.
 
-Basic   | Spec Sheet
--------:|:-------------------------
-SoC     | Snapdragon® 8 Gen 2 (SM8550)
-CPU     | 1x3.2 GHz Cortex-X3 & 2x2.8 GHz Cortex-A715 & 2x2.8 GHz Cortex-A710 & 3x2.0 GHz Cortex-A510
-GPU     | Adreno 740
-Memory  | 8/12 GB RAM
-Shipped Android Version | 13.0 with MIUI 14
-Storage | 128/256/512 GB
-Battery | Li-Ion 4500 mAh, non-removable, graphene-enhanced
-Display | 1080 x 2400 pixels, 20:9 ratio (~414 ppi density), 6.36 inches, OLED, 120Hz, Dolby Vision, HDR10+, 1200 nits (HBM), 1900 nits (peak)
-Camera  | 50 MP Leica lens (wide), 10 MP (telephoto), 12 MP (ultrawide), 32 MP (front-wide)
+而 android.se.omapi.ISecureElementService/default 服务系统中由 SecureElementApplication_14.apk 提供, 我们无法在 TWRP 中直接运行.
 
-## Device picture
+因此我们需要一个能在 TWRP 中运行它的 c++ 替代品, 以达到解密 userdata 的目的. 
 
-![Xiaomi 13](https://cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1670745532.86084186.png)
-
-## Features
-
-Works:
-
-- [X] ADB
-- [X] Decryption
-- [X] Display
-- [X] Fasbootd
-- [X] Flashing
-- [X] MTP
-- [X] Sideload
-- [X] USB OTG
-- [X] Vibrator
-
-## To use it:
-
-```
-fastboot flash recovery_ab out/target/product/fuxi/recovery.img
-```
+很明显我并没有这个能力将它转写成 TWRP 能跑的代码, 所以...

@@ -1,6 +1,6 @@
 <!--
     Input:
-        compatibility_matrix.xml
+        device/qcom/common/compatibility_matrix.xml
 -->
 <compatibility-matrix version="4.0" type="device">
     <hal format="hidl" optional="false">
@@ -43,14 +43,6 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="hidl" optional="false">
-        <name>android.system.wifi.keystore</name>
-        <version>1.0</version>
-        <interface>
-            <name>IKeystore</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
     <hal format="hidl" optional="true">
         <name>vendor.qti.hardware.qccsyshal</name>
         <version>1.0-2</version>
@@ -69,9 +61,10 @@
         </interface>
     </hal>
     <vendor-ndk>
-        <version>33</version>
+        <version>34</version>
     </vendor-ndk>
     <system-sdk>
-        <version>33</version>
+        <version>34</version>
     </system-sdk>
 </compatibility-matrix>
+
