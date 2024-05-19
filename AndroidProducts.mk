@@ -4,6 +4,6 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-PRODUCT_MAKEFILES := $(LOCAL_DIR)/twrp_houji.mk
+PRODUCT_MAKEFILES := $(LOCAL_DIR)/twrp_aurora.mk
 
-COMMON_LUNCH_CHOICES := twrp_houji-eng
+COMMON_LUNCH_CHOICES := twrp_aurora-eng
